@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap');
+
+:root {
+  /* Brand Colors */
+  --color-primary-navy: #0B1E3A;
+  --color-professional-blue: #1F6AE1;
+  --color-accent-yellow: #FDBA2D;
+
+  /* Neutral Colors */
+  --bg-light: #F6F8FC;
+  --bg-white: #FFFFFF;
+  --border-divider: #E6EAF2;
+  --text-primary: #0F172A;
+  --text-muted: #6B7280;
+
+  /* Typography */
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Poppins', 'Inter', system-ui, sans-serif;
+
+  /* Spacing & Borders */
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-premium: 0 25px 50px -12px rgba(31, 106, 225, 0.15);
+
+  /* Modern Glass Effects */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-blur: blur(10px);
+
+  /* Gradients */
+  --grad-primary: linear-gradient(135deg, var(--color-professional-blue) 0%, #3B82F6 100%);
+  --grad-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+
+  /* Layout */
+  --container-max-width: 1200px;
+  --header-height: 80px;
+
+  font-family: var(--font-main);
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--text-primary);
+  background-color: var(--bg-light);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+button {
+  font-family: var(--font-main);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--color-accent-yellow);
+  color: var(--color-primary-navy);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--bg-white);
+  border: 1px solid var(--bg-white);
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-white);
+  color: var(--color-primary-navy);
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.section-dark {
+  background-color: var(--color-primary-navy);
+  color: var(--bg-white);
+}
+
+/* Modern Utilities */
+.text-gradient {
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-mesh {
+  position: relative;
+  background-color: var(--bg-white);
+  background-image:
+    radial-gradient(at 0% 0%, rgba(31, 106, 225, 0.03) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(253, 186, 45, 0.05) 0px, transparent 50%);
+}
+
+.mesh-circle {
+  position: absolute;
+  filter: blur(80px);
+  z-index: 0;
+  opacity: 0.15;
+  pointer-events: none;
+}

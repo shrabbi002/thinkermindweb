@@ -1,0 +1,118 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// 1. Site Structure
+model Page {
+  id       String    @id @default(uuid())
+  slug     String    @unique
+  title    String
+  isActive Boolean   @default(true)
+  sections Section[]
+}
+
+model Section {
+  id        String @id @default(uuid())
+  pageId    String
+  page      Page   @relation(fields: [pageId], references: [id])
+  type      String // 'Hero', 'DetailedGrid', 'TextVisual'
+  content   Json
+  sortOrder Int    @default(0)
+}
+
+// 2. Specialized CMS Models
+model Service {
+  id          String          @id @default(uuid())
+  title       String
+  tagline     String?
+  iconName    String?
+  description String?
+  sortOrder   Int             @default(0)
+  details     ServiceDetail[]
+}
+
+model ServiceDetail {
+  id        String  @id @default(uuid())
+  serviceId String
+  service   Service @relation(fields: [serviceId], references: [id])
+  type      String  // 'HowWeWork', 'Outcome', 'Deliverable'
+  content   String
+  sortOrder Int     @default(0)
+}
+
+model ExportProduct {
+  id             String  @id @default(uuid())
+  name           String
+  description    String?
+  sourcingVision String?
+  imageUrl       String?
+  sortOrder      Int     @default(0)
+}
+
+model EngagementModel {
+  id          String @id @default(uuid())
+  title       String
+  iconName    String?
+  description String?
+  features    Json?  // Array of strings
+  sortOrder   Int    @default(0)
+}
+
+// 3. User & Management
+model User {
+  id           String     @id @default(uuid())
+  email        String     @unique
+  passwordHash String
+  fullName     String
+  roleId       String
+  role         Role       @relation(fields: [roleId], references: [id])
+  auditLogs    AuditLog[]
+  createdAt    DateTime   @default(now())
+}
+
+model Role {
+  id          String @id @default(uuid())
+  name        String @unique
+  permissions Json
+  users       User[]
+}
+
+// 4. CRM & Leads
+model Inquiry {
+  id              String        @id @default(uuid())
+  fullName        String
+  email           String
+  company         String?
+  serviceInterest String?
+  message         String?
+  status          InquiryStatus @default(NEW)
+  createdAt       DateTime      @default(now())
+}
+
+enum InquiryStatus {
+  NEW
+  IN_PROGRESS
+  CLOSED
+  SPAM
+}
+
+// 5. System Settings
+model SiteSetting {
+  id       String  @id @default(uuid())
+  key      String  @unique // e.g., 'hero_tagline_1'
+  value    String
+  category String? // e.g., 'Hero', 'Colors'
+}
+
+model AuditLog {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  action    String
+  createdAt DateTime @default(now())
+}

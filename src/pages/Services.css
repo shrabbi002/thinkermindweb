@@ -1,0 +1,167 @@
+.service-expansion-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-divider);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    margin-bottom: 3rem;
+    transition: all 0.3s ease;
+}
+
+.service-expansion-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-professional-blue);
+}
+
+.service-main-info {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    align-items: flex-start;
+}
+
+.service-main-info .icon-box {
+    width: 70px;
+    height: 70px;
+    background: rgba(31, 106, 225, 0.1);
+    color: var(--color-professional-blue);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.service-main-info .icon-box svg {
+    width: 35px;
+    height: 35px;
+}
+
+.service-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-professional-blue);
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.service-main-info h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.service-main-info p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 800px;
+}
+
+.service-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-divider);
+}
+
+.detail-col h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary-navy);
+}
+
+.detail-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.detail-col li {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.detail-col li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-professional-blue);
+    font-weight: bold;
+}
+
+.outcomes-list li {
+    padding-left: 0 !important;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.outcomes-list li::before {
+    content: none;
+}
+
+.outcomes-list li svg {
+    color: #10b981;
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+.staff-aug-section {
+    position: relative;
+    overflow: hidden;
+    background-color: #fafcfe;
+}
+
+.role-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.role-tag-pill {
+    background: var(--bg-white);
+    padding: 0.85rem 1.75rem;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--color-primary-navy);
+    border: 1px solid var(--border-divider);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    cursor: default;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.ms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.ms-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 500;
+}
+
+.ms-item svg {
+    color: var(--color-professional-blue);
+}
+
+@media (max-width: 768px) {
+    .service-main-info {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
